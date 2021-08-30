@@ -1,3 +1,4 @@
+import '../styles/index.scss'
 import 'antd/dist/antd.css'
 
 export default function MyApp({ Component, pageProps }) {
