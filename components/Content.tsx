@@ -1,7 +1,10 @@
-import { Box } from './primitives'
+import { useState } from 'react'
 import { useMenuContext } from './providers/MenuProvider'
 import { DataTable } from './DataTable'
-import { data, columns } from '../data'
+import { Box } from './primitives'
+import { InfinityTable } from './InfinityTable'
+import { data, columns, columnsAlt } from '../data'
+import { fetchData } from '../utils'
 
 const SimpleTable = (): JSX.Element => {
   return (
@@ -14,15 +17,49 @@ const SimpleTable = (): JSX.Element => {
 }
 
 const NumericTextRightAligned = (): JSX.Element => {
-  return <Box>Numeric Text Right Aligned</Box>
+  return (
+    <Box maxWidth={700}>
+      <DataTable
+        columns={columnsAlt}
+        rows={data}
+        onRowClick={(rowData, rowIndex) => console.log({ rowData, rowIndex })}
+      />
+    </Box>
+  )
 }
 
 const WithCheckboxes = (): JSX.Element => {
-  return <Box>With Checkboxes</Box>
+  return (
+    <DataTable
+      columns={columns}
+      rows={data}
+      selectable={true}
+      onRowClick={(rowData, rowIndex) => console.log({ rowData, rowIndex })}
+      onSelectionChange={(selectedRowKeys, selectedRow) =>
+        console.log({ selectedRowKeys, selectedRow })
+      }
+    />
+  )
 }
 
 const WithInfiniteScroll = (): JSX.Element => {
-  return <Box>With Infinite Scroll</Box>
+  const [loading, setLoading] = useState(false)
+  const [rows, setRows] = useState([])
+  const handleFetch = async () => {
+    setLoading(true)
+    const newData = await fetchData(rows.length)
+    setRows((data) => data.concat(newData))
+    setLoading(false)
+  }
+  return (
+    <InfinityTable
+      columns={columns}
+      rows={rows}
+      selectable={false}
+      loading={loading}
+      fetchData={handleFetch}
+    />
+  )
 }
 
 const WithLargeData = (): JSX.Element => {

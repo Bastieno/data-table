@@ -1,7 +1,7 @@
 import { ColumnDefinitionType } from '../components/DataTable'
 
 interface Cat {
-  id: number
+  id: React.Key
   name: string
   age: number
   gender: string
@@ -67,6 +67,24 @@ export const columns: ColumnDefinitionType<Cat, keyof Cat>[] = [
   {
     id: 'age',
     label: 'Age in years',
+  },
+  {
+    id: 'color',
+    label: 'Color',
+  },
+]
+
+export const columnsAlt: ColumnDefinitionType<Cat, keyof Cat>[] = [
+  {
+    id: 'name',
+    label: 'Cat Name',
+    width: 200,
+  },
+  {
+    id: 'age',
+    label: 'Age in years',
+    numeric: true,
+    width: 150,
   },
   {
     id: 'color',

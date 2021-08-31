@@ -43,11 +43,12 @@ export function DataTable<T extends {}, K extends keyof T>({
 
   return (
     <Table
+      className="table"
       rowKey="id"
       columns={transformColumns(columns)}
       dataSource={rows}
       pagination={false}
-      scroll={{ y: '500' }}
+      scroll={{ y: 500, scrollToFirstRowOnChange: false }}
       rowSelection={
         selectable && {
           type: 'checkbox',
