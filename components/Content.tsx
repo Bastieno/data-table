@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useMenuContext } from './providers/MenuProvider'
 import { DataTable } from './DataTable'
 import { Box } from './primitives'
@@ -10,8 +10,9 @@ import {
   columnsAlt,
   largeData,
   columnsForLargeData,
+  columnsForRemoteData,
 } from '../data'
-import { fetchData } from '../utils'
+import { fetchData, fetchRemoteData } from '../utils'
 
 const SimpleTable = (): JSX.Element => {
   return (
@@ -83,6 +84,39 @@ const WithLargeData = (): JSX.Element => {
   )
 }
 
+const WithRemoteData = (): JSX.Element => {
+  const [loading, setLoading] = useState(false)
+  const [rows, setRows] = useState([])
+  const url = 'https://jsonplaceholder.typicode.com/photos'
+
+  const handleFetch = useCallback(async () => {
+    setLoading(true)
+    try {
+      const newData = await fetchRemoteData(url)
+      setRows(newData)
+    } catch (error) {
+      console.log('error.message :>> ', error.message)
+    } finally {
+      setLoading(false)
+    }
+  }, [url])
+
+  useEffect(() => {
+    handleFetch()
+  }, [])
+
+  return (
+    <VirtualTable
+      columns={columnsForRemoteData}
+      dataSource={rows}
+      loading={loading}
+      scroll={{
+        y: 500,
+      }}
+    />
+  )
+}
+
 export const Content = (): JSX.Element => {
   const { activeLinkId } = useMenuContext()
   return (
@@ -92,6 +126,7 @@ export const Content = (): JSX.Element => {
       {activeLinkId === 3 && <WithCheckboxes />}
       {activeLinkId === 4 && <WithInfiniteScroll />}
       {activeLinkId === 5 && <WithLargeData />}
+      {activeLinkId === 6 && <WithRemoteData />}
     </Box>
   )
 }

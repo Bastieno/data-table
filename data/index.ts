@@ -122,6 +122,22 @@ export const columnsForLargeData = [
   },
 ]
 
+export const columnsForRemoteData = [
+  {
+    title: 'Id',
+    dataIndex: 'id',
+    width: 150,
+  },
+  {
+    title: 'Description',
+    dataIndex: 'title',
+  },
+  {
+    title: 'Url',
+    dataIndex: 'url',
+  },
+]
+
 export const largeData = Array.from(
   {
     length: 100000,

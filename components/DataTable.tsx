@@ -13,6 +13,7 @@ interface DataTableProps<T, K extends keyof T> {
   onRowClick?: (rowData: T, rowIndex: React.Key) => void
   onSelectionChange?: (selectedRowKeys: React.Key[], selectedRows: T[]) => void
   selectable?: boolean
+  loading?: boolean
 }
 
 export function DataTable<T extends {}, K extends keyof T>({
@@ -21,6 +22,7 @@ export function DataTable<T extends {}, K extends keyof T>({
   onRowClick,
   onSelectionChange,
   selectable,
+  loading,
 }: DataTableProps<T, K>): JSX.Element {
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: T[]) =>
@@ -60,6 +62,7 @@ export function DataTable<T extends {}, K extends keyof T>({
           onClick: (_event) => onRowClick(record, rowIndex),
         }
       }}
+      loading={loading}
     />
   )
 }

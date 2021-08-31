@@ -29,7 +29,11 @@ export const fetchData = (startIndex = 0) => {
               }
             })
       )
-    }, randomInt(2, 5) * 1000)
+    }, randomInt(1, 3) * 1000)
   })
   return promise
+}
+
+export const fetchRemoteData = async (url) => {
+  return fetch(url).then((response) => response.json())
 }

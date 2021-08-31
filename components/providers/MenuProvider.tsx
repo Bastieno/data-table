@@ -30,6 +30,11 @@ const menuLinks = [
     text: 'large-data',
     headerText: 'Table that renders large amount of data',
   },
+  {
+    id: 6,
+    text: 'remote-data',
+    headerText: 'Table that renders data from a remote api',
+  },
 ]
 
 const MenuContext = createContext(null)
