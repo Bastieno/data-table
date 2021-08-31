@@ -3,7 +3,14 @@ import { useMenuContext } from './providers/MenuProvider'
 import { DataTable } from './DataTable'
 import { Box } from './primitives'
 import { InfinityTable } from './InfinityTable'
-import { data, columns, columnsAlt } from '../data'
+import { VirtualTable } from './VirtualTable'
+import {
+  data,
+  columns,
+  columnsAlt,
+  largeData,
+  columnsForLargeData,
+} from '../data'
 import { fetchData } from '../utils'
 
 const SimpleTable = (): JSX.Element => {
@@ -18,7 +25,7 @@ const SimpleTable = (): JSX.Element => {
 
 const NumericTextRightAligned = (): JSX.Element => {
   return (
-    <Box maxWidth={700}>
+    <Box maxWidth={900}>
       <DataTable
         columns={columnsAlt}
         rows={data}
@@ -63,7 +70,17 @@ const WithInfiniteScroll = (): JSX.Element => {
 }
 
 const WithLargeData = (): JSX.Element => {
-  return <Box>With Large Data</Box>
+  return (
+    <Box maxWidth={900}>
+      <VirtualTable
+        columns={columnsForLargeData}
+        dataSource={largeData}
+        scroll={{
+          y: 500,
+        }}
+      />
+    </Box>
+  )
 }
 
 export const Content = (): JSX.Element => {

@@ -91,3 +91,42 @@ export const columnsAlt: ColumnDefinitionType<Cat, keyof Cat>[] = [
     label: 'Color',
   },
 ]
+
+export const columnsForLargeData = [
+  {
+    title: 'A',
+    dataIndex: 'key',
+    width: 150,
+  },
+  {
+    title: 'B',
+    dataIndex: 'key',
+  },
+  {
+    title: 'C',
+    dataIndex: 'key',
+  },
+  {
+    title: 'D',
+    dataIndex: 'key',
+  },
+  {
+    title: 'E',
+    dataIndex: 'key',
+    width: 200,
+  },
+  {
+    title: 'F',
+    dataIndex: 'key',
+    width: 100,
+  },
+]
+
+export const largeData = Array.from(
+  {
+    length: 100000,
+  },
+  (_, key) => ({
+    key,
+  })
+)
