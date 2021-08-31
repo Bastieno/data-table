@@ -45,7 +45,7 @@ export function VirtualTable(props: Parameters<typeof Table>[0]) {
   useEffect(() => resetVirtualGrid, [tableWidth])
 
   const renderVirtualList = (
-    rawData: object[],
+    rawData: { [key: string]: unknown }[],
     { scrollbarSize, ref, onScroll }: any
   ) => {
     ref.current = connectObject
