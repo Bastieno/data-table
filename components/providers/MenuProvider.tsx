@@ -8,7 +8,7 @@ const menuLinks = [
   {
     id: 1,
     text: 'simple',
-    headerText: 'Simple Table'
+    headerText: 'Simple Table',
   },
   {
     id: 2,
@@ -34,8 +34,7 @@ const menuLinks = [
 
 const MenuContext = createContext(null)
 
-export const useMenuContext = (): any =>
-  useContext(MenuContext)
+export const useMenuContext = (): any => useContext(MenuContext)
 
 export const MenuContextProvider: React.FC<Props> = ({ children }) => {
   const [activeLinkId, setActiveLinkId] = useState(1)
@@ -51,9 +50,5 @@ export const MenuContextProvider: React.FC<Props> = ({ children }) => {
     addActiveClass,
   }
 
-  return (
-    <MenuContext.Provider value={value}>
-      {children}
-    </MenuContext.Provider>
-  )
+  return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>
 }

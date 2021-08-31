@@ -1,8 +1,16 @@
 import { Box } from './primitives'
 import { useMenuContext } from './providers/MenuProvider'
+import { DataTable } from './DataTable'
+import { data, columns } from '../data'
 
 const SimpleTable = (): JSX.Element => {
-  return <Box>Simple Table</Box>
+  return (
+    <DataTable
+      columns={columns}
+      rows={data}
+      onRowClick={(rowData, rowIndex) => console.log({ rowData, rowIndex })}
+    />
+  )
 }
 
 const NumericTextRightAligned = (): JSX.Element => {
