@@ -40,6 +40,31 @@ context('Home Page', () => {
 
     cy.get('[data-testid=remote-data-table]').should('exist')
   })
+
+  it('renders the InfinityTable', () => {
+    cy.get('.nav-item')
+      .last()
+      .prev()
+      .prev()
+      .click()
+      .should('have.text', 'infinite-scroll')
+
+    cy.get('[data-testid=infinity-table-container]').should('exist')
+  })
+
+  it('renders the NumericTextRightAlignedTable', () => {
+    cy.get('.nav-item')
+      .first()
+      .next()
+      .click()
+      .should('have.text', 'right-align')
+
+    cy.get('[data-testid=numeric-text]').should(
+      'have.css',
+      'max-width',
+      '900px'
+    )
+  })
 })
 
 export {}

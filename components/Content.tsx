@@ -26,7 +26,7 @@ const SimpleTable = (): JSX.Element => {
 
 const NumericTextRightAligned = (): JSX.Element => {
   return (
-    <Box maxWidth={900}>
+    <Box data-testid="numeric-text" maxWidth={900}>
       <DataTable
         columns={columnsAlt}
         rows={data}

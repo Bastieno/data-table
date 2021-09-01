@@ -16,5 +16,6 @@ This app is configured with:
 - Open your browser on `localhost:3000` to view the app
 
 ### Testing
+
 - Run `yarn test` for integration testing-library
 - Run `yarn test:unit` for unit tests

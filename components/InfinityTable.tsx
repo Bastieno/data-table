@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { DataTable } from './DataTable'
-import { Text } from './primitives'
+import { Text, Box } from './primitives'
 
 export const InfinityTable = ({
   columns,
@@ -28,7 +28,7 @@ export const InfinityTable = ({
   })
 
   return (
-    <>
+    <Box data-testid="infinity-table-container">
       <DataTable
         columns={columns}
         rows={rows}
@@ -43,6 +43,6 @@ export const InfinityTable = ({
           Loading...
         </Text>
       )}
-    </>
+    </Box>
   )
 }
