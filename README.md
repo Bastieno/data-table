@@ -14,3 +14,7 @@ This app is configured with:
 - Run `yarn install` to install the dependencies
 - Run `yarn dev` to spin up the app
 - Open your browser on `localhost:3000` to view the app
+
+### Testing
+- Run `yarn test` for integration testing-library
+- Run `yarn test:unit` for unit tests
