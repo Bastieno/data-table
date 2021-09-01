@@ -1,7 +1,7 @@
 import { Box, Text } from './primitives'
 import { useMenuContext } from './providers/MenuProvider'
 
-const AsideMenuLinks = (): JSX.Element => {
+export const AsideMenuLinks = (): JSX.Element => {
   const { setActiveLinkId, menuLinks, addActiveClass } = useMenuContext()
 
   return (
@@ -12,6 +12,7 @@ const AsideMenuLinks = (): JSX.Element => {
       height="calc(100% - 120px)"
       minHeight="200px"
       overflowY="scroll"
+      data-testid="aside-menu-links"
     >
       <Box width="100%" mt={'50px'}>
         {menuLinks.map(({ id, text }) => {

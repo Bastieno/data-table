@@ -113,6 +113,7 @@ const WithRemoteData = (): JSX.Element => {
       scroll={{
         y: 500,
       }}
+      data-testid="remote-data-table"
     />
   )
 }
@@ -120,7 +121,7 @@ const WithRemoteData = (): JSX.Element => {
 export const Content = (): JSX.Element => {
   const { activeLinkId } = useMenuContext()
   return (
-    <Box>
+    <Box data-testid="content">
       {activeLinkId === 1 && <SimpleTable />}
       {activeLinkId === 2 && <NumericTextRightAligned />}
       {activeLinkId === 3 && <WithCheckboxes />}
