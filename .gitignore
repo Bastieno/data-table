@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 .history
+.nyc_output
 
 # debug
 npm-debug.log*

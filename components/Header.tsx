@@ -15,7 +15,13 @@ export const Header = (): JSX.Element => {
         width={'70%'}
         height="100%"
       >
-        <Heading fontSize="20px" fontWeight={600} m={0} color="#002E5A">
+        <Heading
+          data-testid="header"
+          fontSize="20px"
+          fontWeight={600}
+          m={0}
+          color="#002E5A"
+        >
           {headerText}
         </Heading>
       </Box>

@@ -6,7 +6,7 @@ This app is configured with:
 - Linting with [ESLint](https://eslint.org/)
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+- Testing with [Cypress](https://www.cypress.io/)
 
 ### How to use
 
@@ -14,3 +14,8 @@ This app is configured with:
 - Run `yarn install` to install the dependencies
 - Run `yarn dev` to spin up the app
 - Open your browser on `localhost:3000` to view the app
+
+### Testing
+
+- Run `yarn test` for integration testing-library
+- Run `yarn test:unit` for unit tests

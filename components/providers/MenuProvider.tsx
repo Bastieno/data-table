@@ -37,7 +37,10 @@ const menuLinks = [
   },
 ]
 
-const MenuContext = createContext(null)
+const MenuContext = createContext({
+  menuLinks,
+  activeLinkId: 1,
+})
 
 export const useMenuContext = (): any => useContext(MenuContext)
 

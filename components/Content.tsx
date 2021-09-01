@@ -26,7 +26,7 @@ const SimpleTable = (): JSX.Element => {
 
 const NumericTextRightAligned = (): JSX.Element => {
   return (
-    <Box maxWidth={900}>
+    <Box data-testid="numeric-text" maxWidth={900}>
       <DataTable
         columns={columnsAlt}
         rows={data}
@@ -113,6 +113,7 @@ const WithRemoteData = (): JSX.Element => {
       scroll={{
         y: 500,
       }}
+      data-testid="remote-data-table"
     />
   )
 }
@@ -120,7 +121,7 @@ const WithRemoteData = (): JSX.Element => {
 export const Content = (): JSX.Element => {
   const { activeLinkId } = useMenuContext()
   return (
-    <Box>
+    <Box data-testid="content">
       {activeLinkId === 1 && <SimpleTable />}
       {activeLinkId === 2 && <NumericTextRightAligned />}
       {activeLinkId === 3 && <WithCheckboxes />}
