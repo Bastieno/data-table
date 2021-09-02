@@ -1,14 +1,22 @@
 import { useEffect } from 'react'
 import { DataTable } from './DataTable'
 import { Text, Box } from './primitives'
+import { DataTableProps } from './DataTable'
 
-export const InfinityTable = ({
+interface InfinityTableProps<T, K extends keyof T>
+  extends DataTableProps<T, K> {
+  fetchData: VoidFunction
+}
+
+export function InfinityTable<T extends {}, K extends keyof T>({
   columns,
   rows,
+  onRowClick,
+  onSelectionChange,
   selectable,
   loading,
   fetchData,
-}): JSX.Element => {
+}: InfinityTableProps<T, K>): JSX.Element {
   useEffect(() => {
     fetchData()
   }, [])
@@ -33,10 +41,8 @@ export const InfinityTable = ({
         columns={columns}
         rows={rows}
         selectable={selectable}
-        onRowClick={(rowData, rowIndex) => console.log({ rowData, rowIndex })}
-        onSelectionChange={(selectedRowKeys, selectedRow) =>
-          console.log({ selectedRowKeys, selectedRow })
-        }
+        onRowClick={onRowClick ? onRowClick : () => {}}
+        onSelectionChange={onSelectionChange ? onSelectionChange : () => {}}
       />
       {loading && (
         <Text as="p" color="#B50156" mt="12px">

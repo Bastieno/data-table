@@ -64,6 +64,10 @@ const WithInfiniteScroll = (): JSX.Element => {
       columns={columns}
       rows={rows}
       selectable={false}
+      onRowClick={(rowData, rowIndex) => console.log({ rowData, rowIndex })}
+      onSelectionChange={(selectedRowKeys, selectedRow) =>
+        console.log({ selectedRowKeys, selectedRow })
+      }
       loading={loading}
       fetchData={handleFetch}
     />
