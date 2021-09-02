@@ -7,13 +7,14 @@ export type ColumnDefinitionType<T, K extends keyof T> = {
   width?: number | string
 }
 
-interface DataTableProps<T, K extends keyof T> {
+export interface DataTableProps<T, K extends keyof T> {
   columns: ColumnDefinitionType<T, K>[]
   rows: T[]
   onRowClick?: (rowData: T, rowIndex: React.Key) => void
   onSelectionChange?: (selectedRowKeys: React.Key[], selectedRows: T[]) => void
   selectable?: boolean
   loading?: boolean
+  className?: string
 }
 
 export function DataTable<T extends {}, K extends keyof T>({
@@ -23,6 +24,7 @@ export function DataTable<T extends {}, K extends keyof T>({
   onSelectionChange,
   selectable,
   loading,
+  className = 'table',
 }: DataTableProps<T, K>): JSX.Element {
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: T[]) =>
@@ -45,7 +47,7 @@ export function DataTable<T extends {}, K extends keyof T>({
 
   return (
     <Table
-      className="table"
+      className={className}
       rowKey="id"
       columns={transformColumns(columns)}
       dataSource={rows}
